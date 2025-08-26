@@ -1,31 +1,23 @@
 name: ROS-Industrial CI
 run-name: ROS-Industrial CI - ${{ github.event_name }}
 
-# This determines when this workflow is run
-# on: [push, pull_request] # on all pushes and PRs
-
-# or more fine-grained
 on:
-  # When master or melodic-devel branch is pushed to
   push:
     branches:
       - master
       - feature/**
       - fix/**
-    paths-ignore:
-      - doc/**
-      - '**.md'
-      - LICENSE
+
   # When there is a pull request against master
   pull_request:
     branches:
       - master
       - feature/**
       - fix/**
-    paths-ignore:
-      - doc/**
-      - '**.md'
-      - LICENSE
+
+  schedule:
+    # Run every Monday at 1PM UTC
+    - cron: 0 13 * * 1
 
 jobs:
   industrial_ci:
@@ -51,7 +43,7 @@ jobs:
         with:
           fetch-depth: 0
       # This step will fetch/store the directory used by ccache before/after the ci run
-      - uses: actions/cache@v2
+      - uses: actions/cache@v4
         with:
           path: ${{ env.CCACHE_DIR }}
           key: ccache-${{ matrix.env.ROS_DISTRO }}-${{ matrix.env.ROS_REPO }}
