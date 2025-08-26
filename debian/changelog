@@ -1,0 +1,14 @@
+ros-humble-kuka-lbr-iiwa-moveit-config (1.0.0-1jammy) jammy; urgency=high
+
+  * Update package version
+
+ -- Aron Svastits <svastits1@gmail.com>  Mon, 25 Aug 2025 22:00:00 -0000
+
+ros-humble-kuka-lbr-iiwa-moveit-config (0.9.0-1jammy) jammy; urgency=high
+
+  * Add moveit configuration files for KUKA LBR iiwa robots
+  * Contributors: Aron Svastits
+
+ -- Aron Svastits <svastits1@gmail.com>  Sun, 05 May 2024 22:00:00 -0000
+
+
