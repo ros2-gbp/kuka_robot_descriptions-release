@@ -1,4 +1,4 @@
-# Copyright 2023 SAM XL (Eugenio Bernardi)
+# Copyright 2025 SAM XL (Tamas Pepo)
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -27,7 +27,7 @@ def generate_launch_description():
                 [
                     FindPackageShare("kuka_fortec_support"),
                     "urdf",
-                    "kr560_r3100_2.urdf.xacro",
+                    "kr240_r3330.urdf.xacro",
                 ]
             ),
             " ",
