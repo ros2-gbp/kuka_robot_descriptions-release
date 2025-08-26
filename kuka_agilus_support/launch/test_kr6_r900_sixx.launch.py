@@ -24,10 +24,12 @@ def generate_launch_description():
             PathJoinSubstitution([FindExecutable(name="xacro")]),
             " ",
             PathJoinSubstitution(
-                [FindPackageShare("kuka_agilus_support"), "urdf", "kr6_r700_sixx.urdf.xacro"]
+                [FindPackageShare("kuka_agilus_support"), "urdf", "kr6_r900_sixx.urdf.xacro"]
             ),
             " ",
-            "use_fake_hardware:=true",
+            "mode:=mock",
+            " ",
+            "use_gpio:=false",
         ]
     )
     robot_description = {"robot_description": robot_description_content}
