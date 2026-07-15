@@ -1,0 +1,12 @@
+Source: ros-humble-kuka-gazebo
+Section: misc
+Priority: optional
+Maintainer: "Aron Svastits" <svastits1@gmail.com>
+Build-Depends: debhelper (>= 9.0.0), ros-humble-ament-cmake, ros-humble-launch-testing <!nocheck>, ros-humble-launch-testing-ament-cmake <!nocheck>, ros-humble-ros2run <!nocheck>, ros-humble-std-msgs, ros-humble-ros-workspace
+Homepage: https://index.ros.org/p/kuka_gazebo/#humble
+Standards-Version: 3.9.2
+
+Package: ros-humble-kuka-gazebo
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-humble-controller-manager, ros-humble-gz-ros2-control, ros-humble-joint-state-broadcaster, ros-humble-joint-trajectory-controller, ros-humble-robot-state-publisher, ros-humble-ros-gz-bridge, ros-humble-ros-gz-sim, ros-humble-std-msgs, ros-humble-urdf, ros-humble-xacro, ros-humble-ros-workspace
+Description: A helper package for Gazebo support with KUKA robots
