@@ -1,4 +1,4 @@
-# Copyright 2022 KUKA Hungaria Kft.
+# Copyright 2026 KUKA Hungaria Kft.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -26,11 +26,11 @@ def launch_setup(context, *args, **kwargs):
     robot_model = LaunchConfiguration("robot_model")
     robot_family = LaunchConfiguration("robot_family")
 
-    fake_hardware_launch = IncludeLaunchDescription(
+    moveit_server = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(
             [
                 get_package_share_directory("kuka_resources"),
-                "/launch/fake_hardware_planning_template.launch.py",
+                "/launch/moveit_server_template.launch.py",
             ]
         ),
         launch_arguments={
@@ -41,7 +41,7 @@ def launch_setup(context, *args, **kwargs):
         }.items(),
     )
 
-    return [fake_hardware_launch]
+    return [moveit_server]
 
 
 def generate_launch_description():
