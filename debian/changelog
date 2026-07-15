@@ -1,0 +1,7 @@
+ros-jazzy-kuka-kl-support (2.0.0-1bookworm) bookworm; urgency=high
+
+  * Add external axis support
+
+ -- "Aron Svastits" <svastits1@gmail.com>  Tue, 14 Jul 2026 22:00:00 -0000
+
+
