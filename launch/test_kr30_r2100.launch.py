@@ -1,4 +1,4 @@
-# Copyright 2023 Aron Svastits
+# Copyright 2026 KUKA Hungaria Kft.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -27,7 +27,7 @@ def generate_launch_description():
                 [
                     FindPackageShare("kuka_iontec_support"),
                     "urdf",
-                    "kr70_r2100.urdf.xacro",
+                    "kr30_r2100.urdf.xacro",
                 ]
             ),
             " ",
