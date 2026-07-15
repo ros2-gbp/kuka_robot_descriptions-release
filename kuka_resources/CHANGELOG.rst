@@ -2,6 +2,11 @@
 Changelog for package kuka_resources
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+1.1.0 (2026-07-15)
+------------------
+* Cleanup package.xml dependencies 
+* Unify SRDF names and robot_family arguments
+
 1.0.0 (2025-08-26)
 ------------------
 * Gazebo support
