@@ -2,6 +2,8 @@
 
 This repository contains support packages that can be used with real KUKA robots as well as with simulations.
 
+If you find something confusing, not working, or would like to contribute, please read our [contributing guide](https://github.com/kroshu/kuka_robot_descriptions/blob/master/CONTRIBUTING.md) before opening an issue or creating a pull request.
+
 ROS2 Distro | Branch | Github CI
 ------------ | -------------- | --------------
 **Jazzy** | [`master`](https://github.com/kroshu/kuka_robot_descriptions/tree/master) | [![Build Status](https://github.com/kroshu/kuka_robot_descriptions/actions/workflows/industrial_ci.yml/badge.svg?branch=master)](https://github.com/kroshu/kuka_robot_descriptions/actions)
@@ -94,7 +96,7 @@ Example of attaching an end effector (with link name `eef_base_link`) to the `fl
 
 ### External axis support
 
-Robots marked as supporting external axis in the [supported features](#supported-features) have URDFs prepared for this feature.
+Robots marked as supporting external exis in the [supported features](#supported-features) have URDFs prepared for this feature.
 
 - The `world` link and the `world-base_link` joint (and the `origin` block) are moved from the macro into the URDF xacro.
 
@@ -324,18 +326,17 @@ The moveit server will be able to accept planning requests from the rviz plugin 
 
 *Note: LBR iiwa robots do not have acceleration limits available, therefore planning currently fails for them.*
 
-
 ## Gazebo-Supported Robot Testing in CI Pipeline
 
 The tests for Gazebo-supported robots have been successfully integrated into the existing Continuous Integration (CI) architecture. The testing process follows a **two-part structure**, as illustrated in the diagram below.
 
 ### 1. After-Build Hook Phase
 
-Immediately after the build phase (but before the testing phase), the CI pipeline triggers the `before_run_target_test.sh` script. This script launches `run_gazebo_tests.py`, which performs the following tasks:
+Immediately after the build phase (but before the testing phase), the CI pipeline triggers the `after_build_hook.sh` script. This script launches `run_gazebo_tests.py`, which performs the following tasks:
 
 - **Reads robot names and families** from the `README.md` file to ensure all Gazebo-supported robots are included.
 - **Executes parameterized tests** using `gazebo_support_test.py`, a parametrized test script, which:
-  - Launches Gazebo in headless mode through test_gazebo.launch.py.
+  - Launches Gazebo in headless mode, launching the server and the ros gazebo bridge separately.
   - Checks whether the simulation successfully configures and activates:
     - Hardware interfaces
     - Joint State Broadcaster
@@ -352,7 +353,8 @@ To bridge the gap between the actual Gazebo tests and the CI testing framework, 
 - During the testing phase, `test_gazebo_robot_support.py` reads and evaluates the results from this file.
 - To keep the test alive long enough for evaluation, we launch `gazebo_test_keep_alive.cpp`, a simple publisher node that ensures the test file remains active.
 
-> **Note:** The current test uses **Gazebo Fortress (Gazebo Sim v6.17.0)** for verification.
+> **Note:** The current test uses **Gazebo Harmonic (Gazebo Sim v8.9.0)** for verification.
+
 ```mermaid
 graph TD
     %% CI Pipeline Section
@@ -362,13 +364,17 @@ graph TD
         H -->|Launch| J[gazebo_test_keep_alive.cpp]
         J -->|Keep alive| H
     end
+
     %% Test Execution Section
     subgraph Test Execution
         B -->|executes| C[run_gazebo_tests.py]
         F[README.md] -->|reads robot, family| C
         C -->|executes test| D[gazebo_support_test.py]
-        D -->|launch Gazebo server| I[test_gazebo.launch.py]
-        I -->|launches server| L[headless Gazebo]
+        K[bridge_config.yaml] -->|configures bridge| E
+        D -->|launch ros_gz_bridge| E[ros_gz_bridge.launch.py]
+        D -->|launch Gazebo server| I[gz_server.launch.py]
+        E -->|translate| L[headless Gazebo]
+        I -->|launches server| L
         L -->|outputs to| D
         C -->|KILL| L
         D -->|returns result| C

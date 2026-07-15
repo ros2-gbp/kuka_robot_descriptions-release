@@ -2,7 +2,7 @@
 Changelog for package kuka_mock_hardware_interface
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-1.1.0 (2026-07-15)
+2.0.0 (2026-07-15)
 ------------------
 * Clean up KUKA mock hardware implementation
 * Add RSI option for LBR iisy robots (iiQKA.OS2) 

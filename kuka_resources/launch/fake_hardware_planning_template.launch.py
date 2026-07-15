@@ -70,20 +70,21 @@ def launch_setup(context, *args, **kwargs):
     )
 
     # Spawn controllers
-    def controller_spawner(controller_names):
-        arg_list = [
-            controller_names,
-            "-c",
-            controller_manager_node,
-        ]
+    def controller_spawner(controller_with_config):
+        arg_list = [controller_with_config[0], "-c", controller_manager_node]
+        if controller_with_config[1] is not None:
+            arg_list.append("-p")
+            arg_list.append(controller_with_config[1])
         return Node(package="controller_manager", executable="spawner", arguments=arg_list)
 
-    controller_names = [
-        "joint_state_broadcaster",
-        "joint_trajectory_controller",
+    controller_names_and_config = [
+        ("joint_state_broadcaster", None),
+        ("joint_trajectory_controller", controller_config),
     ]
 
-    controller_spawners = [controller_spawner(name) for name in controller_names]
+    controller_spawners = [
+        controller_spawner(controllers) for controllers in controller_names_and_config
+    ]
 
     moveit_server = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(

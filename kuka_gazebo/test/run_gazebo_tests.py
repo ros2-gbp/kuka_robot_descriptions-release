@@ -31,7 +31,7 @@ def kill_gazebo_gui(*args, **kwargs):
         result = subprocess.run(["ps", "aux"], stdout=subprocess.PIPE, text=True)
         found = False
         for line in result.stdout.splitlines():
-            if "ign gazebo" in line or "ros_gz_bridge" in line:
+            if "gz sim gui" in line or "gz sim server" in line:
                 pid = line.split()[1]
                 print(f"Killing Gazebo process with PID: {pid}")
                 subprocess.run(["kill", "-9", pid])
@@ -115,7 +115,7 @@ for model, support in tests:
     print("--- STDERR ---")
     if (
         "test_robot_initialization "
-        "(gazebo_support_test.TestDuringLaunch) ... ok" in result.stderr
+        "(gazebo_support_test.TestDuringLaunch.test_robot_initialization) ... ok" in result.stderr
     ):
         summary.append((model, support, "PASS"))
     else:
