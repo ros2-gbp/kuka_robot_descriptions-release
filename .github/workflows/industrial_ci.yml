@@ -27,7 +27,7 @@ jobs:
         env:
         - ROS_REPO: ros
           BUILDER: colcon
-          ROS_DISTRO: jazzy
+          ROS_DISTRO: humble
           BEFORE_RUN_TARGET_TEST: .ci_config/hooks/before_run_target_test.sh
           CMAKE_ARGS: "--cmake-args -DGITHUB_CI_TESTS=ON"
     env:
@@ -39,7 +39,7 @@ jobs:
       PR_NUMBER: ${{ github.event.number }}
       ANALYZER_TOKEN: ${{ secrets.ANALYZER_TOKEN }}
       DEBUG_BASH: true
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
         with:

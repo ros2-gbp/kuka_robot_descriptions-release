@@ -2,14 +2,14 @@
 Changelog for package kuka_fortec_support
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-2.0.2 (2026-07-20)
+1.1.2 (2026-07-20)
 ------------------
 
-2.0.1 (2026-07-20)
+1.1.1 (2026-07-20)
 ------------------
 * Fix missing package dependencies
 
-2.0.0 (2026-07-15)
+1.1.0 (2026-07-15)
 ------------------
 * Add new robot models
 * Add external axis support
