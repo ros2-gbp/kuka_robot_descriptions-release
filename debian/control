@@ -1,0 +1,12 @@
+Source: ros-jazzy-kuka-robot-descriptions
+Section: misc
+Priority: optional
+Maintainer: "Aron Svastits" <svastits1@gmail.com>
+Build-Depends: debhelper (>= 9.0.0), ros-jazzy-ament-cmake, ros-jazzy-ros-workspace
+Homepage: https://index.ros.org/p/kuka_robot_descriptions/#jazzy
+Standards-Version: 3.9.2
+
+Package: ros-jazzy-kuka-robot-descriptions
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-jazzy-kuka-agilus-support, ros-jazzy-kuka-cybertech-support, ros-jazzy-kuka-fortec-support, ros-jazzy-kuka-gazebo, ros-jazzy-kuka-iontec-support, ros-jazzy-kuka-kl-support, ros-jazzy-kuka-kr-moveit-config, ros-jazzy-kuka-lbr-iisy-moveit-config, ros-jazzy-kuka-lbr-iisy-support, ros-jazzy-kuka-lbr-iiwa-moveit-config, ros-jazzy-kuka-lbr-iiwa-support, ros-jazzy-kuka-mock-hardware-interface, ros-jazzy-kuka-quantec-support, ros-jazzy-kuka-resources, ros-jazzy-ros-workspace
+Description: Robot descriptions and moveit configurations for KUKA robots
