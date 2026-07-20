@@ -1,0 +1,31 @@
+ros-jazzy-kuka-iontec-support (2.0.1-1bookworm) bookworm; urgency=high
+
+  * Fix missing package dependencies
+
+ -- "Aron Svastits" <svastits1@gmail.com>  Sun, 19 Jul 2026 22:00:00 -0000
+
+ros-jazzy-kuka-iontec-support (2.0.0-1bookworm) bookworm; urgency=high
+
+  * Add new robot models
+  * Add external axis support
+  * Add mxA hardware interface to ros2_control xacros
+
+ -- "Aron Svastits" <svastits1@gmail.com>  Tue, 14 Jul 2026 22:00:00 -0000
+
+ros-jazzy-kuka-iontec-support (1.0.0-1bookworm) bookworm; urgency=high
+
+  * GPIO support
+  * Robot model verification
+  * Xacro restructure
+  * Gazebo support
+
+ -- "Aron Svastits" <svastits1@gmail.com>  Mon, 25 Aug 2025 22:00:00 -0000
+
+ros-jazzy-kuka-iontec-support (0.9.0-1bookworm) bookworm; urgency=high
+
+  * Add model for robot kr70_r2100 (transform chain, joint limits, collision meshes)
+  * Contributors: Aron Svastits
+
+ -- "Aron Svastits" <svastits1@gmail.com>  Sun, 05 May 2024 22:00:00 -0000
+
+
