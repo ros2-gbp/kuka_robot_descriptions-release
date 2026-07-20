@@ -2,6 +2,9 @@
 Changelog for package kuka_lbr_iiwa_moveit_config
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+1.1.2 (2026-07-20)
+------------------
+
 1.1.1 (2026-07-20)
 ------------------
 * Fix missing package dependencies
