@@ -112,30 +112,17 @@ def launch_setup(context, *args, **kwargs):
     # Gazebo (headless CI mode)
     gz_server_ld = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(
-            PathJoinSubstitution([FindPackageShare("ros_gz_sim"), "launch", "gz_server.launch.py"])
+            PathJoinSubstitution([FindPackageShare("ros_gz_sim"), "launch", "gz_sim.launch.py"])
         ),
-        launch_arguments={
-            "world_sdf_file": world_path,
-            "container_name": "ros_gz_container",
-            "create_own_container": "False",
-            "use_composition": "False",
-        }.items(),
+        launch_arguments={"gz_args": [world_path, " -r -s -v1"]}.items(),
         condition=UnlessCondition(use_gui),
     )
 
-    # Bridge via the ros_gz_bridge launch file + config (works for both modes)
-    ros_gz_bridge_ld = IncludeLaunchDescription(
-        PythonLaunchDescriptionSource(
-            PathJoinSubstitution(
-                [FindPackageShare("ros_gz_bridge"), "launch", "ros_gz_bridge.launch.py"]
-            )
-        ),
-        launch_arguments={
-            "config_file": PathJoinSubstitution(
-                [FindPackageShare("kuka_gazebo"), "config", "bridge_config.yaml"]
-            ),
-            "bridge_name": "ros_gz_bridge",
-        }.items(),
+    gazebo_bridge = Node(
+        package="ros_gz_bridge",
+        executable="parameter_bridge",
+        arguments=["/clock@rosgraph_msgs/msg/Clock[gz.msgs.Clock"],
+        output="screen",
     )
 
     # Spawn the robot into Gazebo
@@ -155,7 +142,7 @@ def launch_setup(context, *args, **kwargs):
         output="screen",
     )
 
-    # Controller spawner helper
+    # Spawn controllers
     def controller_spawner(controller_name, param_file=None, activate=False):
         args = [controller_name, "-c", "controller_manager", "-n", ns]
         if param_file:
@@ -177,7 +164,7 @@ def launch_setup(context, *args, **kwargs):
         gz_sim_ld,
         gz_server_ld,
         gazebo_robot_node,
-        ros_gz_bridge_ld,
+        gazebo_bridge,
     ] + controller_spawners
 
     return nodes
