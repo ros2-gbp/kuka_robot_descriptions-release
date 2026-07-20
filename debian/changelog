@@ -1,0 +1,13 @@
+ros-jazzy-kuka-kl-support (2.0.1-1bookworm) bookworm; urgency=high
+
+  * Fix missing package dependencies
+
+ -- "Aron Svastits" <svastits1@gmail.com>  Sun, 19 Jul 2026 22:00:00 -0000
+
+ros-jazzy-kuka-kl-support (2.0.0-1bookworm) bookworm; urgency=high
+
+  * Add external axis support
+
+ -- "Aron Svastits" <svastits1@gmail.com>  Tue, 14 Jul 2026 22:00:00 -0000
+
+
