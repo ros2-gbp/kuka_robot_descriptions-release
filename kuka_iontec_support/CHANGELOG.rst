@@ -2,6 +2,10 @@
 Changelog for package kuka_iontec_support
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+1.1.1 (2026-07-20)
+------------------
+* Fix missing package dependencies
+
 1.1.0 (2026-07-15)
 ------------------
 * Add new robot models
