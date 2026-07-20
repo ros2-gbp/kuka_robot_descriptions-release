@@ -2,6 +2,10 @@
 Changelog for package kuka_resources
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+2.0.1 (2026-07-20)
+------------------
+* Fix missing package dependencies
+
 2.0.0 (2026-07-15)
 ------------------
 * Cleanup package.xml dependencies 
