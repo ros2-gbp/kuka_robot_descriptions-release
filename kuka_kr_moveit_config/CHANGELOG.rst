@@ -2,6 +2,10 @@
 Changelog for package kuka_kr_moveit_config
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+2.0.1 (2026-07-20)
+------------------
+* Fix missing package dependencies
+
 2.0.0 (2026-07-15)
 ------------------
 * Unify SRDF names and robot_family arguments
