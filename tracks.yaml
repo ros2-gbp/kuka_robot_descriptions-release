@@ -25,7 +25,7 @@ tracks:
     release_tag: :{version}
     ros_distro: humble
     vcs_type: git
-    vcs_uri: https://github.com/kroshu/kuka_robot_descriptions.git
+    vcs_uri: https://github.com/kuka-ros/kuka_robot_descriptions.git
     version: :{auto}
   jazzy:
     actions:
